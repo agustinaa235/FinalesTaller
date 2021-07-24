@@ -19,7 +19,6 @@ f es la declaracion de un puntero a una funcion, en la cual esta funcion a su ve
 En este codigo tenemos un puntero pi que apunta a la direccion 1000, como se trata de un puntero int cuando se va a incrementar pi este va aumentar en 4 bytes ya que un int 
 ocupa 4 bytes por lo que de la posicion 1000 se pasa a la posicion 1100 = 1000 + 100. 
 4) ¿Qué es un functor? ¿Qué ventaja ofrece frente a una función convencional? Ejemplifique.
-5) 
 Un functor son objetos que pueden ser tratados como funciones o punteros a funciones, esas son clases que tienen sobre cargado el operador (). Estp nos permite utilizar una instancia de una clase como una funcion y solo una funcion que no es cualquiera, cosa que si se utilizaron punteros esta seguidad no estaria porque justamente al ser punteos estos pueden apuntar a direcciones de memoria erroneas.Su ventaja es que nos dan la seguridad de no ejecutar cualquier codigo, que si sucede con punteros mal inicializados como los punteros a funciones. 
  
 5) ¿Cómo se logra que 2 threads accedan (lectura/escritura) a un mismo recurso compartido sin que se generen problemas de consistencia? Ejemplifique.
