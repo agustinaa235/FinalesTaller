@@ -42,7 +42,7 @@ Explique qué se entiende por “compilación condicional”. Ejemplifique media
 copilacion condicional es cuando de acuerdo a la direciva del compilador compila un codigo o no. SE utiliza la directiva ifndef en la cual si la clase no es 
 defina la compila y si lo eta directamente salta al endif Sirve much para cortar las inclusiones de bibliotecas 
 ej:
-```
+```C
 #ifndef _CLASE_
 #define _CLASE_
 ....
