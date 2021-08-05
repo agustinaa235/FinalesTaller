@@ -47,5 +47,31 @@ int b()
 static float c; char d=70;
 return c+(float) d;
 }
-```          
+``` 
+* a: es un arreglo de tamanio 25 de punteros a int. Es externo por lo cual va a estar inicialializado en otro modulo y no se le asigna singun area de memoria. 
+* b: b es una funcion sin paramtros que devuelve int. Se encuentra definida y recide en el data segment.
+* c: es un static float, solo puede ser accedida en la funcion b ya que es local y static. Al ser una declaracion no se le resever memoria por lo que no redice en ninguna area de memoria. 
+* d: es una variable del tipo char en la cual esta inicializada con valor correspondiente a la tabla ascci de 70. Recide en el stack
+
+# Ejercicio 7
+Escriba una rutina que dibuje un rombo verde que ocupe toda la ventana.
+:(
+# Ejercicio 8
+¿Qué diferencia existe entre un constructor por copia y uno por movimiento? Ejemplifique.
+
+El constructor por copia lo que hace es copiar cada atributo del objeto pasado por referencia para crear uno nuevo. Hace una copia de bit a bit del objeto. 
+Mientras que el constructor por moviento cambia el ownership, es decir, no se hace una duplicacion de este sino que se mueven las referencias de los atributos 
+haciendo que el objeto nuevo apunte a lo que aputnaba el objeto recibido y este se hace que sus atributos apunten a null. La gran diferencia es que al objeto 
+pasado por el constructir por copai no puede ser modificado mientras que el utilizado por movimiento si. 
+ej:
+```C++
+class Numero{
+    public:
+            Numero(int& valor); //constructor 
+            Numero(const Numero& otro); //por copia 
+            Numero(Numero&& otro); //por movimiento
+}
+```
+ 
+            
 
