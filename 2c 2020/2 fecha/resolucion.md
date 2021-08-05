@@ -72,6 +72,20 @@ class Numero{
             Numero(Numero&& otro); //por movimiento
 }
 ```
+# Ejercicio 9
+Escriba una función ISO C que permita procesar sobre sí mismo (sin generar archivos intermedios ni cargar el archivo completo a memoria) un archivo texto con palabras separadas por espacios. El procesamiento consiste en duplicar las palabras que tengan al menos de 2 vocales.
+
+Ejercicio 10
+# Ejercicio 10
+¿Qué es la compiLación condicional? Ejemplifique
+La compilacion condicional es cuando ciertas partes del codigo van a ser compialdas o no dependiendo de si se encuentra definida. Muy util para cortar los includes cicliclos. Ej
+```c
+#ifndef _CLASS_
+#defina _CLASS_
+...
+...
+#endif
+```
  
             
 
