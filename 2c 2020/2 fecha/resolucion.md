@@ -1,0 +1,51 @@
+# Ejercicio 1
+Escriba un programa (desde la inicialización hasta la liberación de los recursos) que escuche el puerto 120 y reciba paquetes de la forma: 
+[CHAR_LIM]xxxxx.xxxxxxx[CHAR_LIM] donde [CHAR_LIM] puede ser cualquier caracter ASCII Al completar la recepción del paquete deberá imprimir el caracter con más 
+apariciones del mismo (sin considerar [CHAR_LIM]). Al recibir un paquete vacío ([CHAR_LIM][CHAR_LIM]) debe cerrarse ordenadamente. No considere errores.
+
+# Ejercicio 2
+¿Qué función se utiliza para lanzar hilos?¿Qué parámetros tiene y para qué sirven? Ejemplifique.
+En c++ podemos ejecutar/lanzar un hilo por medio de std::thread. Los parametros que se deben pasar es la funcion que queremos que ocurra en un hilo paralelo y sus 
+parametris. Ej:
+``` 
+void f (int i);
+
+std::thread(f,1);
+```
+# Ejercicio 3
+¿Qué finalidad tiene la palabra virtual antepuesta a un método? Ejemplifique.
+
+# Ejercicio 4
+Implemente una función C++ denominada DUPLICAR que reciba dos listas de elementos y devuelva una nueva lista duplicando los elementos de la primera que están en 
+la segunda: std::list Duplicar(std::list a,std::list b);
+
+hecho en otro final como doblesegunda 
+
+# Ejercicio 5
+Declare una clase a elección considerando: - Atributos que son necesarios - Accesibilidad a la Clase - Incluir los operadores *, --(pre-decremento), 
+++(post-incremento), << (impresión), >>(carga desde consola), functor
+
+```C++
+class Numero{
+    private:
+          int valor;
+    public:
+          Numero(int& valor); 
+          int operador--();
+          int operador++();
+          std::istream operador>>(std::istream v, NUmero& numero);
+          std::ostream operador<<(std::ostream v, NUmero& numero);
+          ~Numero();
+}
+```
+# Ejercicio 6
+Explique qué es (a), (b), (c) y (d), haciendo referencia a su valor y momento de inicialización, su comportamiento y el area de memoria donde residen:
+```C
+extern int *a[25];
+int b()
+{
+static float c; char d=70;
+return c+(float) d;
+}
+```          
+
