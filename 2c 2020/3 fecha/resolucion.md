@@ -63,6 +63,7 @@ int size();
 int compararCadenas(char cadena1[Tam], char cadena2[Tam]);
 char devolverCaracterEnpos(int pos);
 void agregarCaracterEnPos(char character, int pos);
+void cotieneCaracter(char caracter);
 ```
 # Ejercicio 6
 ¿Qué es una macro de C? Detalle las buenas prácticas para su definición. Ejemplifique
