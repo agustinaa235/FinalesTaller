@@ -29,7 +29,7 @@ Describa con exactitud las siguientes declaraciones/definiciones globales:
 Escribir un programa ISO C que reciba por argumento el nombre de un archivo de texto y lo procese sobre sí mismo (sin crear archivos 
  intermedios ni subiendo todo su contenido a memoria). El procesamiento consiste en eliminar las líneas de 1 sola palabra.  
  
- RESUELTO INCOMPLETAMENTE
+ RESUELTO I
  # Ejercicio 5
  Declare una clase de elección libre. Incluya todos los campos de datos requeridos con su correcta exposición/publicación, y los operadores
   ++, -, ==, >> (carga), << (impresión), constructor move y operador float().
