@@ -1,45 +1,31 @@
-
-/*******
-Escribir un programa ISO C que reciba por argumento el nombre de un archivo de texto y
-lo procese sobre sí mismo (sin crear archivos intermedios ni subiendo todo su contenido
-a memoria). El procesamiento consiste en eliminar las líneas de 1 sola palabra.
-*******/
+/*Escribir un programa ISO C que procese el archivo “nros_2bytes_bigendian.dat”
+sobre sí mismo, eliminando los número múltiplos de 7*/
 
 #include <stdio.h>
-#include <string.h>
-#define MAX_TAMANIO 1000
+#include <stdint.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <arpa/inet.h>
 
-void eliminar_palabra(File* archivo, int tam_palabra){
-  fseek(arrchivo, tam_palabra, SEEK_CUR);
+int main(int argc, char** argv){
+    FILE* lectura = fopen("nros_2bytes_bigendian.dat", "rb");
+    FILE* escritura = fopen("nros_2bytes_bigendian.dat", "rb+");
+    // chequear que se puedan abrir, ahora no tengo ganas
 
-
-}
-void procesarArchivo(File* archivo){
-    char palabra[MAX_TAMANIO];
-    int tamanio_palabra;
-    int cant_espacios;
-    while(fgets(palabra, MAX_TAMANIO, archivo) != NULL){
-        tamanio_palabra = strlen(palabra);
-        cant_espacios = 0;
-        for(int i = 0; i< tamanio_palabra; i++){
-            if(palabra[i] == ' '){
-                cant_espacios++;
-            }
+    uint16_t aux;
+    uint16_t numero;
+    int bytes = 0;
+    fread(&aux, sizeof(aux), 1, lectura);
+    while (!feof(lectura)){
+        numero = htons(aux);
+        if (numero % 7 != 0){
+            fwrite(&numero, sizeof(numero),1, escritura);
+            bytes += sizeof(numero);
         }
-        if (cant_espacios == 0){
-          eliminar_palabra(archivo, tamanio_palabra); // es una linea de una sola palabra //borro
-        }
+        fread(&aux, sizeof(aux), 1, lectura);
     }
-    return
-}
-
-int main(int argc, char const* argv[]){
-    File* archivo = fopen(argv[1], "r+");
-    if (archivo == NULL){
-        return 0;
-    }
-    procesarArchivo(archivo);
-    fclose(archivo);
+    ftruncate(fileno(escritura), bytes);
+    fclose(escritura);
+    fclose(lectura);
     return 0;
-
 }
