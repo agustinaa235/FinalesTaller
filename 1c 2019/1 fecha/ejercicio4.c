@@ -1,31 +1,63 @@
-/*Escribir un programa ISO C que procese el archivo “nros_2bytes_bigendian.dat”
-sobre sí mismo, eliminando los número múltiplos de 7*/
+
+/*******
+Escribir un programa ISO C que reciba por argumento el nombre de un archivo de texto y
+lo procese sobre sí mismo (sin crear archivos intermedios ni subiendo todo su contenido
+a memoria). El procesamiento consiste en eliminar las líneas de 1 sola palabra.
+*******/
 
 #include <stdio.h>
-#include <stdint.h>
+#include <string.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <arpa/inet.h>
 
-int main(int argc, char** argv){
-    FILE* lectura = fopen("nros_2bytes_bigendian.dat", "rb");
-    FILE* escritura = fopen("nros_2bytes_bigendian.dat", "rb+");
-    // chequear que se puedan abrir, ahora no tengo ganas
-
-    uint16_t aux;
-    uint16_t numero;
+void procesarArchivo(FILE* lectura, FILE* escritura){
+    char aux = ' ';
     int bytes = 0;
-    fread(&aux, sizeof(aux), 1, lectura);
+    int cantidad_espacios = 0;
+    int cant_letras = 0;
+    fread(&aux,sizeof(char),1,lectura);
     while (!feof(lectura)){
-        numero = htons(aux);
-        if (numero % 7 != 0){
-            fwrite(&numero, sizeof(numero),1, escritura);
-            bytes += sizeof(numero);
+        printf("letra: %c\n", aux);
+        while (aux != '\n' && aux != feof(lectura)){
+              if (aux == ' '){
+                  cantidad_espacios++;
+              }
+              cant_letras++;
+              fwrite(&aux, sizeof(aux),1, escritura);
+              fread(&aux, sizeof(aux),1, lectura);
+              printf("letra: %c\n", aux);
         }
-        fread(&aux, sizeof(aux), 1, lectura);
+        if (cantidad_espacios == 0){
+              printf("entre");
+              fseek(escritura, -cant_letras, SEEK_CUR);
+        } else{
+              bytes += cant_letras;
+        }
+        fwrite(&aux,sizeof(char),1,escritura);
+        bytes++;
+        fread(&aux,sizeof(char),1,lectura);
+        cant_letras = 0;
+        cantidad_espacios = 0;
+
     }
+    rewind(escritura);
     ftruncate(fileno(escritura), bytes);
+    return;
+}
+int main(int argc, char const* argv[]){
+    FILE* lectura = fopen("archivo.txt"/*argv[1]*/, "r+");
+    FILE* escritura = fopen("archivo.txt"/*argv[1]*/, "r+");
+    if (lectura == NULL){
+        printf("error");
+        return 0;
+    }
+    if (escritura == NULL){
+        printf("error");
+        fclose(lectura);
+        return 0;
+    }
+    procesarArchivo(lectura, escritura);
     fclose(escritura);
     fclose(lectura);
     return 0;
+
 }
