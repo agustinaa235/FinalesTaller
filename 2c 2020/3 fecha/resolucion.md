@@ -21,7 +21,7 @@ segment y si no es unicializada se la inicializa con un valor NULL
 # Ejercicio 3
  Escribir un programa ISO C que procese el archivo “nros2bytes.dat” sobre sí mismo, duplicando los enteros de 2 bytes múltiplos de 3.
  
- # Archivo binario falta :(
+ # Hecho
  
 # Ejercicio 4
  ¿Cómo se logra que 2 threads accedan (lectura/escritura) a un mismo recurso compartido sin que se generen problemas de consistencia? Ejemplifique.
@@ -105,3 +105,4 @@ HECHO EN OTRO FINAL
 # Ejercicio 10
 Escriba un programa que reciba por línea de comandos un Puerto y una IP. El programa debe establecer una unica conexión, quedar en escucha e imprimir en 
 stdout todo lo recibido. Al recibir el texto ‘FINAL’ debe finalizar el programa sin imprimir dicho texto.
+HECHO
