@@ -55,7 +55,7 @@ return c+(float) d;
 
 # Ejercicio 7
 Escriba una rutina que dibuje un rombo verde que ocupe toda la ventana.
-:(
+HECHO
 # Ejercicio 8
 ¿Qué diferencia existe entre un constructor por copia y uno por movimiento? Ejemplifique.
 
@@ -74,6 +74,7 @@ class Numero{
 ```
 # Ejercicio 9
 Escriba una función ISO C que permita procesar sobre sí mismo (sin generar archivos intermedios ni cargar el archivo completo a memoria) un archivo texto con palabras separadas por espacios. El procesamiento consiste en duplicar las palabras que tengan al menos de 2 vocales.
+HECHO
 
 Ejercicio 10
 # Ejercicio 10
