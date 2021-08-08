@@ -21,7 +21,7 @@ segment y si no es unicializada se la inicializa con un valor NULL
 # Ejercicio 3
  Escribir un programa ISO C que procese el archivo “nros2bytes.dat” sobre sí mismo, duplicando los enteros de 2 bytes múltiplos de 3.
  
- # Hecho
+Hecho
  
 # Ejercicio 4
  ¿Cómo se logra que 2 threads accedan (lectura/escritura) a un mismo recurso compartido sin que se generen problemas de consistencia? Ejemplifique.
