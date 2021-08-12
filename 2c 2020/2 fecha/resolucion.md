@@ -5,15 +5,29 @@ apariciones del mismo (sin considerar [CHAR_LIM]). Al recibir un paquete vacío 
 
 # Ejercicio 2
 ¿Qué función se utiliza para lanzar hilos?¿Qué parámetros tiene y para qué sirven? Ejemplifique.
-En c++ podemos ejecutar/lanzar un hilo por medio de std::thread. Los parametros que se deben pasar es la funcion que queremos que ocurra en un hilo paralelo y sus 
-parametris. Ej:
-``` 
-void f (int i);
+En c++11 para poder ejecutar/ lanzar un funcion en un hilo se puede hacer mediante std::thread. Los parametros que tiene son la funcion que se quiere ejecutar en ese hilo y los otros parametris corresponden a los parametros de la funcion. 
+ej:
+void foo(int i){}
 
-std::thread(f,1);
-```
+int main(){
+    std::thread hilo(foo, 1);
+}    
+
 # Ejercicio 3
 ¿Qué finalidad tiene la palabra virtual antepuesta a un método? Ejemplifique.
+
+La palabra virtual lo que indica es si ese metodo va a tener entrada en la tabla virtual del metodos. Los metodos virtuales son metodos que se declaran en una clase base y estos pueden ser redefinidos o no en las clases sub hijas. Si fuese abstracto, es decir virtual puro, ahi las clases hijas tienen que definiarla cada uno pero sino es virtual puro pueden no redefinirlas. Son muy importantes para la la programacion orientada a objetos, para la herencia y el polimorfismo. 
+ej:
+```
+ Class Figura{
+        virtual int calcularArea();
+ }
+ class Triangulo: public Figura{
+        int calcularArea(){
+            return (base*altura)/2;
+       }
+}
+```
 
 # Ejercicio 4
 Implemente una función C++ denominada DUPLICAR que reciba dos listas de elementos y devuelva una nueva lista duplicando los elementos de la primera que están en 
@@ -25,19 +39,6 @@ hecho en otro final como doblesegunda
 Declare una clase a elección considerando: - Atributos que son necesarios - Accesibilidad a la Clase - Incluir los operadores *, --(pre-decremento), 
 ++(post-incremento), << (impresión), >>(carga desde consola), functor
 
-```C++
-class Numero{
-    private:
-          int valor;
-    public:
-          Numero(int& valor); 
-          int operador--();
-          int operador++();
-          std::istream operador>>(std::istream v, NUmero& numero);
-          std::ostream operador<<(std::ostream v, NUmero& numero);
-          ~Numero();
-}
-```
 # Ejercicio 6
 Explique qué es (a), (b), (c) y (d), haciendo referencia a su valor y momento de inicialización, su comportamiento y el area de memoria donde residen:
 ```C
@@ -48,10 +49,10 @@ static float c; char d=70;
 return c+(float) d;
 }
 ``` 
-* a: es un arreglo de tamanio 25 de punteros a int. Es externo por lo cual va a estar inicialializado en otro modulo y no se le asigna singun area de memoria. 
-* b: b es una funcion sin paramtros que devuelve int. Se encuentra definida y recide en el data segment.
-* c: es un static float, solo puede ser accedida en la funcion b ya que es local y static. Al ser una declaracion no se le resever memoria por lo que no redice en ninguna area de memoria. 
-* d: es una variable del tipo char en la cual esta inicializada con valor correspondiente a la tabla ascci de 70. Recide en el stack
+* a es la definicion de un array de tamanio 25 de punteros a int. Se inicicalizara en el modulo extener en el que fue declarado y no posee area de memoria ya que es extern, es decir, se encuentra en otro porgrama.
+* b es una declaracion de un funcion que devuelve int y no recieb parametros. Esta recide en el code segment y tiene un scope local.
+* c es una declaracion del tipo flote, es una variable static por lo que se ecnuentra en el data segment, esta solo puede ser accedida dentro de la funcion y cuando este termine de ejecutarse termina el lifetime de la varibale. Se inicializa una vez al iniciarse la ejecucion del programa y se inicializa en cero ya que se inicializan con este valor las variables estaticas que no se les asigno un valor al compilarse el programa.
+* d es una declaracion del tipo char, se encuentra inicializada con el caracter correspondiente al valor 70 de la tabla ascci, esta redice en el stack y tiene un lifetime de lo que dure la ejecucion de la funcion , es decir, cuando se sale de la funcion ya no se puede acceder a esa variable. Tiene un sope local de esa funcion.
 
 # Ejercicio 7
 Escriba una rutina que dibuje un rombo verde que ocupe toda la ventana.
@@ -59,19 +60,7 @@ HECHO
 # Ejercicio 8
 ¿Qué diferencia existe entre un constructor por copia y uno por movimiento? Ejemplifique.
 
-El constructor por copia lo que hace es copiar cada atributo del objeto pasado por referencia para crear uno nuevo. Hace una copia de bit a bit del objeto. 
-Mientras que el constructor por moviento cambia el ownership, es decir, no se hace una duplicacion de este sino que se mueven las referencias de los atributos 
-haciendo que el objeto nuevo apunte a lo que aputnaba el objeto recibido y este se hace que sus atributos apunten a null. La gran diferencia es que al objeto 
-pasado por el constructir por copai no puede ser modificado mientras que el utilizado por movimiento si. 
-ej:
-```C++
-class Numero{
-    public:
-            Numero(int& valor); //constructor 
-            Numero(const Numero& otro); //por copia 
-            Numero(Numero&& otro); //por movimiento
-}
-```
+
 # Ejercicio 9
 Escriba una función ISO C que permita procesar sobre sí mismo (sin generar archivos intermedios ni cargar el archivo completo a memoria) un archivo texto con palabras separadas por espacios. El procesamiento consiste en duplicar las palabras que tengan al menos de 2 vocales.
 HECHO
@@ -79,14 +68,9 @@ HECHO
 Ejercicio 10
 # Ejercicio 10
 ¿Qué es la compiLación condicional? Ejemplifique
-La compilacion condicional es cuando ciertas partes del codigo van a ser compialdas o no dependiendo de si se encuentra definida. Muy util para cortar los includes cicliclos. Ej
-```c
-#ifndef _CLASS_
-#defina _CLASS_
-...
-...
-#endif
-```
+
+La compilacion condicional es el proceso por el cual se verifica condicionalmente si un bloque de codigo debe ser compilado o no. Esto se hace por medio de las directivas #ifndef, #define, #endif. Si el bloque no esta definido se lo define y si lo esta directamente ejecuta la directiva endif. Sirve mucho para cuando evitar inclusiones multiples del mismo archivo en un encabezado. 
+
  
             
 
