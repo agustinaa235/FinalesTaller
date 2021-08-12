@@ -1,6 +1,11 @@
-1) ¿Qué es una macro de C? Enumere buenas prácticas para su definición.
+#Ejercici1
+¿Qué es una macro de C? Enumere buenas prácticas para su definición.
 Es una porcion de codigo en la cual es procesada en la etapa de precompilacion, en la precompilacion lo que se hace es copiar esa porcion de codigo en todo lugar 
-al que fue llamado. FALTA BENEFICIOS.
+al que fue llamado. Una macro es una instrcuccion que se realiza en la forma de directiva al preprocesador del compilador de c, con el objetivo de que este expanda todas sus aparaciciones del simbolo de la macro de forma literal. La macros pueden estar en funcion de varaibles por lo que una buena practica es poner e las variables entre parentesis ya que este lo que hace es copiar de forma literal y asi evitar probelmas.
+ej:
+ ``` #define DOBLE(A) 2*(A)
+ ```
+ 
 2) Describa el proceso de transformación de código fuente a un ejecutable. Precise las etapas y las tareas desarrolladas en cada una de ellas
 para pasar del codigo fuente a un codigo ejecutable tenemos distintas etapas:
  - Preproceso: 
