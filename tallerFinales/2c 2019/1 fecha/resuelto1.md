@@ -44,8 +44,10 @@ typedef struc cadena_caracteres{
  
  # Ejercicio 6 
  ¿Qué es una macro de C? Detalle las buenas prácticas para su definición. Ejemplifique
- una macro es una porcion de codigo que se traduce en tiempo de preproceso, antes de que se realiza el proceso de compilacion y pasar el codigo a codigo ensamblador lo que se 
- hace es una expacion de macros en la cual se copia en todo lugar donde fue llamada la macro el codigo definido y luego ahi se pasa a la etapa de compilacion. 
+ Una macro es una instruccion que se realiza en forma de directiva al preprocesador del compilador de c, con el objetivo de expandir todas las apariciones del simbolo asociado a la macro de forma literal. Las macros pueden estar definidas en funcion de una variable, y como las macros son expandidas de forma literal, es importante que las varaibles se encuentren entre parentesis para evitar problemas. Otra buena practica es tener un nombre descriptivo. 
+ ej:
+ ``` #define DOBLE(A) 2*(A)```
+
  # Ejercicio 7 
  Describa el proceso de transformación de código fuente a un ejecutable. Precise las etapas y las tareas desarrolladas en cada una de ellas.
  Como primer paso está el preprocesamiento donde se realiza la expansión de macros, luego en el proceso de compilación consiste en transformar el código fuente al código 
