@@ -49,6 +49,7 @@ int main(int argc, char** argv){
               printf("primer lectura: %c ", aux);
               fread(&aux, sizeof(char), 1, lectura);
           }
+          char extra = aux;
           fseek(lectura, -2, SEEK_CUR);
           for (int i = digitos-1; i>=0; i--){
               fread(&aux, sizeof(char), 1, lectura);
@@ -59,20 +60,17 @@ int main(int argc, char** argv){
               base3 = base3*3;
               fseek(lectura, -2, SEEK_CUR);
           }
-          fseek(lectura, digitos -1, SEEK_CUR);
-          fread(&aux, sizeof(char), 1, lectura);
-          printf(" leo aux %c\n", aux);
-          for (int j = 0; j<4; j++){
+          fseek(lectura, digitos , SEEK_CUR);
+          //printf(" leo aux %c\n", aux);
+          for (int j = 3; j>=0; j--){
               char digitoHexa = pasoAHexa(numero);
               numero = numero / 16;
               printf("numero en hexa %c \n", digitoHexa);
               numeroHexa[j] = digitoHexa;
           }
-          for (int a = 3; a >=0; a--){
-              printf("valor a escirbir %c ", numeroHexa[a]);
-              bytes += fwrite(&numeroHexa[a], sizeof(char), 1, escritura);
-          }
-          bytes += fwrite(&aux, sizeof(char), 1, escritura);
+          bytes += fwrite(numeroHexa, sizeof(char), 4, escritura);
+
+          bytes += fwrite(&extra, sizeof(char), 1, escritura);
           fread(&aux, sizeof(char), 1, lectura);
       }
       ftruncate(fileno(escritura), bytes);
