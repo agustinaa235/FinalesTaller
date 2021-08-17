@@ -20,9 +20,9 @@ Escriba una función ISO C llamada Replicar que reciba 1 cadena (S), dos índice
 # Ejercicio 3
 Describa con exactitud las siguientes declaraciones/definiciones globales:
   1. void (*F)(int i);
-   es una declaracion de una funcion f puntero que tiene como paraemtro un int
+    f es un puntero a una funcion que recibe como parametro el tipo int y devuelve void. 
   2. static void B(float a, float b){} 
-    es una definicion de una funcion que no puede ser llamado en otro modulo ya que es estatica 
+    b es una definicion de una funcion que solo puede ser accedida en ese modulo.
   3. int *(*C)[5]; 
     se trata de una declaracion de un array de 5 elementos, en cual contiene punteros a int. 
 # Ejercicio 4
@@ -33,32 +33,51 @@ Escribir un programa ISO C que reciba por argumento el nombre de un archivo de t
  # Ejercicio 5
  Declare una clase de elección libre. Incluya todos los campos de datos requeridos con su correcta exposición/publicación, y los operadores
   ++, -, ==, >> (carga), << (impresión), constructor move y operador float().
+ ```C++
+ 
+  clas Numero{
+    private:
+      std::string valor;
+    public:
+      Numero& operator++(); // pre incremento
+      Numeroo& operator--() // pre descrecimiento
+      Numero& operator++(int) post incremento
+      Numero& operator--(int) post incremento
+      std::istream& operator>>(std::istream& in, Numero& otroNumero);
+      std::ostream& operator<<(std::ostream& out, Numero& otroNumero);
+      Numero& operador-(Numero& otroNumero);
+      Numero& (Numero&& otroNumero); // constructor move
+      operator float() const;
+```      
+      
 # Ejercicio 6
 ¿Qué es una macro de C? Describa las buenas prácticas para su definición y ejemplifique.
-Una macro es una procion de codigo en la cual esta se traduce en tiempo de preprocesamiento, es decir, en el proprocesamiento se copia y pega el codigo en 
-todo lugar a que fue llamado. FALTA BUENAS PRACTICAS.
+
+Una macro es una instruccion que se realiza en forma de directiva del precompiadlor del compilador c, en la cual tiene como objetivo exapandir todas las apariciones del simbolo aosicado a la macro de forma literal. Estas pueden estar definidas en funcion de variables y como las macros son expandidas de forma literal es importante que las variables se encuentren encerradas dentro de parentesis para asi se evitan errores. Otra buena practica es utilizar nombres descriptivos.
+Ej:
+``` #define DOBLE(A) 2*(A)```
+
 # Ejercicio 7
+
 Escriba un programa que reciba por línea de comandos un Puerto y una IP. El programa debe aceptar una única conexión e imprimir en stdout la sumatoria de 
 los enteros recibidos en cada paquete. Un paquete está definido como una sucesión de números recibidos como texto, en decimal, separados por comas y 
 terminado con un signo igual (ej: “27,12,32=”). Al recibir el texto ‘FIN’ debe finalizar el programa ordenadamente liberando los recursos.
 FALTA
 # Ejercicio 8
+
 Describa el proceso de transformación de código fuente a un ejecutable. Precise las etapas, las tareas desarrolladas y los tipos de error generados en cada 
 una de ellas.
-La primer estaba es la de preprocesamiento en la cual en esta estaba se realiza la expacion de macros y directivas del compliador y saltan todos los 
-problemas relacioando con la expancion de la macro. Luego esta la etapa de compilacion en la cual en esta se pasa de codigo de texto a codigo objeto primero se 
-pasa a un lenguaje de mas bajo nivel (assembly) y luego lo que se hace es tarducir ese lenguaje a codigo de maquina. Aqui surgen los probelmas de si no hay 
-variables declaradas, es decir uso una variable que no esta declarada ni definida, entre otros. Y por ultimo se realiza el proceso de linkeo en la cual 
-consiste de combinar distintos modulos ya previemiente compilados en un unico modulo para luego generar el archivo ejecutable.
+La primer etapa es la de preprocesamiento en la cual se realizna la expancion de la macros y directivas del compilador. Aca es donde saltan los erroe relacionado con la expancion de la macro y si los includes.
+DEspues esta la etapa de compilacion donde se pasa de codigo fuente a codigo objeto, primero se pasa de codigo fuente a codigo de mas bajo nivel(codigo assembly) y luego de codigo assembly a odigo objeto. En esta etapa surgen los errores como cuando no hay una variable declarada, es decir se utiliza una vriable que no fue declarada ect. 
+Por ultimo esta la etapa de linkeo en donde se juntan los distintos modulos en uno solo y aca es donde se genera el archivo ejecutable.
+
 # Ejercicio 9
 ¿Qué ventaja ofrece un lock raii frente al tradicional lock/unlock ?
-Cuando se utiliza un lock raii la ventaja que tiene es que realiza un lock cuando se invoca al constructor y un unlock cuando se invoca al destructor. Como se 
-esta aplicnaod raii, el destructor se invoca automaticamente generando que se haga un unlock. Esto genera que no suceda el caso de que te quede un hilo colgado 
-por no haber hecho un lock ya sea porque el programador se olvido o por una exception. 
+Un lock raii es un lock que sigue con el patron raii, es decir, en el constructor se realiza un lock del mutex y cuando se invoca al destructor se realiza un unlock. Esto permite evitar problemas de olvidos de programador de no liberar al mutex cuando termina de utilizar el recurso.
+
 # Ejercicio 10
 ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en términos de mantener el programa ‘vivo’ ?
-una funcion es bloqueante cuando se queda en estado "suspendido", es decir, esperando a que la tarea que este realizando termine. Para mantener un programa vivo lo 
-que se haria es tener esa funcion bloqueante en un hilo aparte para que siga el flujo del programa. 
-No se si esta bien.
+
+Una funcion es bloqueante cuando no retorna inmediatamente, es decir, se queda a la espera de algun evento o hasta finalizar la tarea. Un ejemplo de funcion bloqueante es la funcion accept de sockets en la cual se queda bloqueada hasta que le llega un cliente para aceptar. Esto es un problema para programas de server/clientes ya que no solo se quiere aceptar clientes sino que tambien procesar sus mensajes (recibir y mandar mensajes) por lo que para mantener el porgrama vivo se tiene la funcion bloqueante en un hilo aparte asi ese hilo se queda a la espera de algun evento y l programa puede seguir ejecutandose en otro hilos. 
 
 
