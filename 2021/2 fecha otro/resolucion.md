@@ -34,14 +34,14 @@ de esta manera se puede evitar que se realize una copia ya que el constrcutor po
 ```C++
 class NumeroGrande{
   private:
-        long int valor;
+        std::string valor;
   public:
       NumeroGrande (const NumeroGrande& numero);
-      NumeroGrande (long int unValor);
+      NumeroGrande (std::string unValor);
       ~NumeroGrande();
       NumeroGrande& operator-(NumeroGrande& numero);
       NumeroGrande& operaror++(int);
-      NumeroGrande& operatot--();
+      NumeroGrande& operatot--(int);
       std::istream& operador>>(std::istream& in, NumeroGrande& numero);
       std::ostream& operador<< (std::ostream& out, NumeroGrande& numero);
       operator float() const;
@@ -66,7 +66,7 @@ otro ejemplo de uso es:
  
  ¿Qué es la STL?¿Qué recursos (funciones, algoritmos, etc.) ofrece?¿Qué ventaja nos da su
 uso?
-STL es un connjunto de librerias estandar de c++ que ya tienen inplementadas ciertas funciones ,algoritmos conocidos como de busqueda o estructras (lista, cola, vectores, mapa, etc) y le permite a los porgramodres utilizarl todas la funciones que tienen sin la necesidad de que el porgramodr se tenga que poner a programarlas. Estan para usarlas como una herramienta para utilizar en nuestro peograma. A su vez nos solucionas ciertos problemas como manejos de memoria o refrencias como con una cola, al hacer #include <queue> simplemnete utilizamos la cola y sus funciones y nos nos preocumaos de la memoria o si la cola esta vacia puedo hacer pop ya que eso ya esta implemnetado y verificado.
+STL es un conjunto de librerias estandar de c++ que ya tienen inplementadas ciertas funciones ,algoritmos conocidos como de busqueda o estructras (lista, cola, vectores, mapa, etc) y le permite a los porgramodres utilizarl todas la funciones que tienen sin la necesidad de que el porgramodr se tenga que poner a programarlas. Estan para usarlas como una herramienta para utilizar en nuestro peograma. A su vez nos solucionas ciertos problemas como manejos de memoria o refrencias como con una cola, al hacer #include <queue> simplemnete utilizamos la cola y sus funciones y nos nos preocumaos de la memoria o si la cola esta vacia puedo hacer pop ya que eso ya esta implemnetado y verificado.
 
 # Ejercicio 7
 
@@ -80,7 +80,23 @@ ordenadamente
   
 ¿Qué es un Deadlock? Ejemplifique con código que constituya un indefectible caso
   
- Un deadlock es cuando se tienen hilos bloqueados. Esto ocurre cuando se tiene un recurso compartido progretigo en la cual se realizo un lock dle mutex que permite que si un hilo lo accede otros no lo puedan acceder a el hasta que sea liberado es decir hasta que se realice un unlock del mutex. Pero cuando tenemos un deadlock, lo que paso es que nunca se libero el recurso (nunca se hizo un unlock) por lo que el hilo que estaba usando el recurso ya no lo usa mas pero al no haberse hecho un unlock ningun otro hilo puede acceder al recurso.
+ Un deadlock es cuando se tienen hilos bloqueados. Esto sucede cuando se tienen por ejemplo dos hilos. El hilo 1 toma el recurso A y este no lo libera hasta que el recurso B sea liberado y pueda tomarlo. Luego el hilo 2 toma el recurso B y este no lo liberara hasta que el recurso A sea liberado y tomarlo. Ambos hilos estan a la espera de que el otro libere el recurso. Eso es un deadlock.
+ ej:
+ 
+ ```C++
+ 
+ void foo(std::mutex& m){
+      m.lock();
+     m.unlock();
+ }
+ 
+ int main(){
+     m.lock();
+     std::thread hilo (foo, std::ref(m));
+     hilo.join();
+     m.unlock();
+ ```
+ el hilo princpial toma al mutex y bloquea luego se ejeuta la funcion foo en un hilo parate esta se bloquea y esta esperando a que el mutex de la funcion main sea liberado, pero este no va a ser liberado ya que primeor se debe ejecutar hilo.join() para luego liberar el mutex pero nunca se va a ser un join de hilo ya que este esta bloqueado esperando a que se libere el mutex tomado por el hilo main.
  
 # Ejercicio 9
   
@@ -92,5 +108,24 @@ múltiplos de 3
  
 Implemente un programa de 2 threads (producer-consumer) que genere e imprima los
 números del 1 al 100.
+```C
+class Numero{
+    priavte: 
+      std::mutex m;
+      std::conditional_variable cv;
+     std::queue<int> cola;
+     bool termine = false;
+    pubcli:
+     bool producirNumeros(){
+      for (int i = 0; i< 100 ; i++){
+             cola.push(i+1);
+             cv.notify_all();
+       }
+       cv.notify_all();
+       termine = true;
+       return true;
+}
+                            
+   
   
   
