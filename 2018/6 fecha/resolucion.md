@@ -20,7 +20,7 @@ f es una funcion qe recibe como paramteros un puntero a short constante y devuel
 # Pregunta 3
 Explique que es y para que sirve una variable de clase (o atributo estatico) en C++. Mediante un ejemplo de uso, indique como se define dicha variable, su inicializacion y el acceso a su valor para realizar una impresion simple dentro de un main.
 
-Una variable de clase o atributo estatico es una vraible que es la misma la para todas las intancias(objetos) de la clase. Esta es inicializada por el porgramador o en cero/NULL si es que no estaba inicializada. La ventaja que permite es que se puede acceder a ellas sin la necesidad de instanciar una clase. Ej:
+Una variable de clase o atributo estatico es una vraible que es la misma la para todas las intancias(objetos) de la clase, es decir, es propia de la clase y no de cada instancia. Esta es inicializada por el porgramador o en cero/NULL si es que no estaba inicializada. La ventaja que permite es que se puede acceder a ellas sin la necesidad de instanciar una clase. Ej:
 ```
 Class Numero{
   public:
@@ -47,6 +47,7 @@ Escriba una clase template llamada Sumador que reciba por constructor un vector 
 
 Que restricciones se le piden al tipo generico en la definicion de Sumador?
 
+La registricciones que el tipo de dato que luego se utlice debe soportar la operacion suma, es decir, tener sobrecaragado el operado()
 # Pregunta 7
 Explique la diferencia entre las etapas de compilacion y enlazado (linking). Escriba un breve ejemplo de codigo con errores para cada una de ellas indicandolos de forma clara
 Primero esta la etapa de pre compilacion donde se realizan la epancion de las macros y directivas del precompialdor. Aca surgen problemas relacionados a ellos. Luego esta la estapa de compilacion donde se pasa del codigo fuente a codigo objeto aca surgen porblemas del tipo utilizacion de variables no declaradas, ect. Y por ultimo esta la etapa de linkeo que es donde se juntan todos los modulos(archivos objetos) en un unico modulo y asi generea un archivo ejecutable. SE resuelven los problemas de exter y global.
