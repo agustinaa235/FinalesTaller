@@ -82,7 +82,8 @@ obligadas a implemnetar la funcion de la clase base. Es muy util para aplicar po
 Al tener un metodo como virtual lo que haces es crear una entrada en la Vtable(tabla virtual) de ese metodo en la cual lo que indcara que es emetodo se tiene que 
 resolver en tiempo de ejecucion. 
 ej:
-``` class Figura{
+```C++
+class Figura{
             public: 
                   virtual calcularArea() = 0;
      }
@@ -100,7 +101,7 @@ ej:
 
 los templates tiene valores por defecto en la cual son utilizados en caso de que no se defina ningun tipo de dato
 ej:
-```
+```C++
 template<class T = int>
 T max(Tx, Ty){
       return (x>y?x:y);
@@ -112,7 +113,7 @@ Un contructor por copia es un tipo de constructor que devuelve una copia de la i
 pasado para crear otro. En el caso que este no este definido por el programador, el compilador crea uno por defecto al menos que el desarolladorador decia borrarlo, es decir, no permite la utilizacion de este. Son basicamante usados cuando una rugumento se pasa por valor y lo que se haces es instanciar a un objeto en base del otro. 
 Su uso es importante ya que sino se define, el compliador creara uno por defecto y esto podria llegar a traer probelmas porque justamente lo que haces es inovcar al constructor por copia de todos los miembros del objeto. UN porblema puede ser cuando hay recursos compartidos.
 ej:
-```
+```C++
       class Numero{
             priavte:
                   int valor;
@@ -135,7 +136,7 @@ psudo codigo:
 
 la variable de clase o atributo de clase es una variable que es comun a todas las instancias de la clase. SE declara como un atributo normal pero con la palabra reservada static previa. Esta puede estar inicializa por el programador como no. SE puede acceder a ella sin la necesidad de teer instancia una clase.
 ej:
-```
+```C++
       if (Foo::a){
        
        }
@@ -186,7 +187,7 @@ un thread es la ejecucion de una funcion o bloque de codigo. En c++ 11 para pode
 # directivas #define, #include, #ifndef. #ifdef
 
 La directiva #define le asigna un nombre identificable por el preporcesador a un fracmento de codigo en la cual este luego podria ser copiado y pegado en caso de que aparezca en el codigo.
-```
+```C++
 #define MAX 100
 
 int main(){
@@ -197,7 +198,7 @@ lo que hace en ese caso es copiar literalmente el valor de la macro al ser encon
 
 la directiva #include lo que haces es copiar las declaraciones que se encuentra en el archivo de la directiva en el archivo que se este incluyendo. Esto sirve para cuando se tienen funciones o variables declaras en otro archivo y se quieren utilizarlas asi no se tienen que implementar.
 ej:
-```
+```C++
 # include "misFunciones.h"
 
 int main(){
@@ -211,7 +212,7 @@ la directiv #ifndef chequea o verifica si el identificador asociado esta definid
 
 La compialcion condiciones verifica condicionalmente si una parte del codigo esta definida o no. Esta es resuelta en la estapa de preprocesamiendo ( ya que en esta estapa se resuelven las directivas del precompialdor). 
 ej:
-```
+```C++
 #ifndef _CLASS_
 #define _CLASS_
 ...
@@ -227,7 +228,7 @@ los templates son plantillas de clases y son utilizados para escribir codigo gen
 
 un deadlock es cuando un conjuntos de hilos ejecutandose estan bloqueados permanentemente. Esto suele ocurrir cuando se tienen dos hilos y dos recursos. El hilo1 toma el recurso A y lo bloquea y se queda a la espera de que el otro recurso sea liberado para liberara a A, mientrs que el hilo 2 toma el recurso B y se queda a la espera de que el recurso A sea liberado para liberar B por lo que los dos hilos se estan auto bloqueando. Esto genera un deadlock.
 otro ejemplo en codigo:
-```
+```C++
       std::mutex m;
       void foo(){
             m.lock() // esta funcion se bloquea esperando a que el mutex del hilo priciapl se libere.
@@ -248,7 +249,7 @@ Las funciones que se utilizan para ejecutarlos son la de lanzamiento que espor m
 # Que es una macro en C?
 Una macro es una instruccion que se realiza en forma de directiva del precompilador del compialdor d c, con el objetivo de expandir todas las apariciones del simbolo asociado a la macro de forma literal. Etsas pueden estar en funcion de variables, y como las macros se expanden de forma literal es importante que las variables esten entre parentesis para evitar errores. Tambien es una buena practica asignarle un nombre descriptivo
 ej:
-```
+```C++
 `/MAL EJEMLO DE MACRO 
 #define CUBO(A) A*A*A
 
