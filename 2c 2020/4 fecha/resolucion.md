@@ -11,8 +11,23 @@ Escribir un programa ISO C MULTIPLATAFORMA que procese el archivo “bigEndian.d
 
 # Ejercicio 4
 Qué es un Deadlock? Ejemplifique.
-
-Un deadlock es cuando se estan utilizando threads, es el bloque permanente de un conjunto de procesos y sucede cuando  se tiene un recurso compartido donde este posee un mutex para proteger al recurso en donde en el recurso compratido se hace un lock al mutex para que el hilo que lo agarro lo pueda usar sin problema y que otros hilos no puedan acceder al recurso mientras este lo tenga pero el programador se olvido de liberar el recurso, es decir, hacer un unlock al mutex entonces ningun otro hilo puede acceder al recurso y es ahi donde ocurre un deadlock. Si se utilizara un lock raii, una clase que cumple con el patron raii, este problema se evitaria ya que el unlock se hace dentro del destructor por lo que cuando el hilo termine de usar el recurso es inmediato el unlock y no se tendria ese problema.
+Un deadlock es cuando se tienen bloqueados multiples hilos. Un ejemplo muy claro de esto es cuando el hilo 1 toma al recurso A, el hilo 2 Toma al recuros B porque no llego a tomar el A, el hilo 1 termina y esta a la espera de liberen el recurso b para libersr el recurso A y el hilo 2 esta haciendo lo mismo Esta esperando que se libere el recurso A para liberar el B. De esta manera ambos hilos estan bloqueandose mutuamente.
+ej:
+```
+std::mutex m
+void funcion(){
+     m.lock() // se bloquea a la espera de ser liberado el mutex tomado por el hilo priniciapl
+     m.unlock() // nunca se logra liberarlo porque se bloqueo a la espera de que sea liberado el mutex del hilo principal.
+}
+int main(){
+    m.lock() // se bloquea el recurso 
+    std::thread hilo(funcion); // se lanza la funcion en el hilo
+    hilo.join() // el hilo se queda bloqueado hasta que finalice su ejecucion 
+    m.unlock() // si el hilo nunca se desbloquea no se puede liberar el recurso.
+    return 0;
+}    
+```
+En este ejemplo en el hilo principial se toma el mutex, luego se lanza una funcion en un hilo donde en ella se bloquea a la espera de que se libere el mutex del hilo principial pero este no se liberanunca ya que luego de lanzar el hilo se hace un join en la cual se bloquea hasta que finalice de ejecutarse el hilo pero el hilo ninca finaliza porque no se desbloqueo el mutex por l que nunca ejecuta el unlock y nunca se libera elmutex del hilo principial porque la liberacion se hace luego del join del hilo lo cual nunca va a suceder.
 
 # Ejercicio 5
 Escriba un programa que reciba por línea de comandos un Puerto y una IP. El programa debe conectarse y quedar en escucha de paquetes con la forma 
