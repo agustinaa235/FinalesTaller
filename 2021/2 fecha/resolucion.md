@@ -40,6 +40,25 @@ números del 100 al 1
 # Ejercicio 5
 Implemente una función C++ denominada PurgarMapa que reciba un mapa (clave-valor)
 por referencia y le quite los elementos cuyos valores están repetidos.
+```C++
+void PurgarMapa(std::map<T,T> mapa){
+     std::map<T,T> aux;
+     for (auto it = mapa.begin(); it!= mapa.end(); ++it){
+         auto valor = it->first;
+         auto clave = it->second;
+         bool agrego = true;
+         for (auto it2 = mapa.begin(); it2 != mapa.end(); ++it2){
+              if (it2 != it1 && clave != it2->first && valor == it2->second){
+                    agrego = false;
+               }
+         }
+         if (agrego){
+             aux.insert({clave, valor});
+         }
+     }
+     aux.swap(mapa);
+}
+```
     
 # Ejercicio 6
 Explique y ejemplifique el uso de la directiva de precompilación #include
@@ -65,8 +84,8 @@ b) Una variable local static
 c) Un atributo de clase static.
 
 a) Es una vraible que va a ser inicializada al inico del programa, por ser globla static puede ser accedida por todo el modulo en el que se encuentra, si no es inicializada por el porgramador va a ser inicializada poren cero, su lifetime es la duracion del todo el programa y recide en el data segment.
-b) Es una variable que si el porgramador no la inicializo se inicializa en cero. Va a poder ser accedida solo en la funcion que fue declarada y su duracion o lifetime es lo que dure la funcion , es decir, el tiempo de ejecucuion de la funcion cuando esa funcion sale del scope esa variable muere y recide en el data segment por ser static. 
-c) Un atributo de clase static puede ser accedida solo por la correspondiente clase si es privada, si es publica podra accederse por fuera de la clase. Se inicializa en cero en caso de no estar especificado su valor inicial, su duracion es hasta que se invoque al destructor de la instacia y recibe en el data segment. 
+b) Es una variable que si el porgramador no la inicializo se inicializa en cero. Va a poder ser accedida solo en la funcion que fue declarada. Esta no cambia de valor entre acceso de diferenctes funciones, es decir, si se sale de la funcion no cambia su valor. Recide en el data segment. 
+c) Atributo de clase static, tambien reside en el data segment. Es un atributo comun a todas las instancias de la clase, en caso de no inicializarce tambien se inicia en 0. 
 
 # Ejercicio 8
 ¿Qué es un template? Ejemplifique
