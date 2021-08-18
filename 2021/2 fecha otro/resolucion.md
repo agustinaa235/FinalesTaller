@@ -124,7 +124,31 @@ class Numero{
        cv.notify_all();
        termine = true;
        return true;
-}
+} 
+       bool consumirNumero(){
+           while(!termine){
+                cv_wait();
+           }
+           while(!cola.empty()){
+                  std::cout << cola.front() << std::endl;
+                  cola.pop();
+          }
+      }
+int main(){
+   Numero numero;
+   std::thread hilo1([&]({
+                while(numero.ProducirNumero()){
+                         continue;
+                  }),std::ref(numero));
+  std::thread hilo2([&]({
+                while(numero.consumirNUmero()){
+                         continue;
+                  }),std::ref(numero));
+   hilo1.join();
+   hilo2.join();
+   return 0;
+  }
+   ```
                             
    
   
