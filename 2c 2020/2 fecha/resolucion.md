@@ -16,9 +16,9 @@ int main(){
 # Ejercicio 3
 ¿Qué finalidad tiene la palabra virtual antepuesta a un método? Ejemplifique.
 
-La palabra virtual lo que indica es si ese metodo va a tener entrada en la tabla virtual del metodos. Los metodos virtuales son metodos que se declaran en una clase base y estos pueden ser redefinidos o no en las clases sub hijas. Si fuese abstracto, es decir virtual puro, ahi las clases hijas tienen que definiarla cada uno pero sino es virtual puro pueden no redefinirlas. Son muy importantes para la la programacion orientada a objetos, para la herencia y el polimorfismo. 
+La palabra virtual lo que indica es si ese metodo va a tener entrada en la tabla virtual del metodos. Va a indicrasos si el metodo se resuelve en tiempo de ejecucuion .Los metodos virtuales son metodos que se declaran en una clase base y estos pueden ser redefinidos o no en las clases sub hijas. Si fuese abstracto, es decir virtual puro, ahi las clases hijas tienen que definiarla cada uno pero sino es virtual puro pueden no redefinirlas. Son muy importantes para la la programacion orientada a objetos, para la herencia y el polimorfismo. 
 ej:
-```
+```C++
  Class Figura{
         virtual int calcularArea();
  }
@@ -33,15 +33,46 @@ ej:
 Implemente una función C++ denominada DUPLICAR que reciba dos listas de elementos y devuelva una nueva lista duplicando los elementos de la primera que están en 
 la segunda: std::list Duplicar(std::list a,std::list b);
 
-hecho en otro final como doblesegunda 
+```C++
+template <class T>
+std::list<T> Duplicar(std::list<T> a, std::list<T> b){
+           std::list<T> nueva;
+           for (T& elem: a){
+                if (!(std::find(b.begin(), b.end(), elem) == b.end()){
+                        // estan encontes agrego 
+                        nueva.push_back(elem);
+                        nueva.push_back(elem);
+                 }
+            }
+            return nueva;
+}
+```
 
 # Ejercicio 5
 Declare una clase a elección considerando: - Atributos que son necesarios - Accesibilidad a la Clase - Incluir los operadores *, --(pre-decremento), 
 ++(post-incremento), << (impresión), >>(carga desde consola), functor
+```C++
+    class Numero{
+          private:
+            int valor;
+           public:
+            Numero(const int& unValor); //constructor
+            NUmero(const Numero& unNumero); // constructor por copia
+            Numero& operator=(const Numero& unNumero); // operador= por copia
+            Numero& operator++(int); // post incremento
+            Numero& operator--(int); // post decremento
+            Numero& operator++(); // pre incremento
+            Numero& operator--() // pre descremento
+            operador float(); const 
+            std::istream& operator>>(std::istream& in, Numero& unNumero);
+            std::ostream& operator<<(std::ostream& out, Numero& unNumero);
+            void operador()(); // functor
+     }
+ ```    
 
 # Ejercicio 6
 Explique qué es (a), (b), (c) y (d), haciendo referencia a su valor y momento de inicialización, su comportamiento y el area de memoria donde residen:
-```C
+```C++
 extern int *a[25];
 int b()
 {
@@ -60,6 +91,8 @@ HECHO
 # Ejercicio 8
 ¿Qué diferencia existe entre un constructor por copia y uno por movimiento? Ejemplifique.
 
+Un construcor copia devuleve una copia de la instacia recibida por parametros. Esto lo que hace es realizar una copia bit a bit del objeto pasado mientras que un constrcutor por movimiento evita la copia innecesario y justamente mueve las referencias, es decir, cambia el ownership, el objeto pasado por referencia deja a apuntar a sus atributos y el nuevo duenio pasa a ser el objeto creado. La gran difreneica entre estas dos es que en e constructor por copia no se puede modiifcar al
+objeto pasado por referencia (es por eso que se tiene dos duenios) mientras que el objeto pasado por el contructor de movimiento si se lo modifica. 
 
 # Ejercicio 9
 Escriba una función ISO C que permita procesar sobre sí mismo (sin generar archivos intermedios ni cargar el archivo completo a memoria) un archivo texto con palabras separadas por espacios. El procesamiento consiste en duplicar las palabras que tengan al menos de 2 vocales.
@@ -70,7 +103,7 @@ Ejercicio 10
 ¿Qué es la compiLación condicional? Ejemplifique
 
 La compilacion condicional es el proceso por el cual se verifica condicionalmente si una parte de un archivo debe ser compilada o no. Esto se sabe por medio de la directivas del compilador #ifndef, #define y #endif. Ej
-```
+```C++
 #ifndef   _NUMERO_
 #define _NUMERO_
 ...
