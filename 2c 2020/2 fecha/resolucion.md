@@ -64,8 +64,8 @@ Declare una clase a elección considerando: - Atributos que son necesarios - Acc
             Numero& operator++(); // pre incremento
             Numero& operator--() // pre descremento
             operador float(); const 
-            std::istream& operator>>(std::istream& in, Numero& unNumero);
-            std::ostream& operator<<(std::ostream& out, Numero& unNumero);
+            friend std::istream& operator>>(std::istream& in, Numero& unNumero);
+            friend std::ostream& operator<<(std::ostream& out, Numero& unNumero);
             void operador()(); // functor
      }
  ```    
