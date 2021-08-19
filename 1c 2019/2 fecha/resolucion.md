@@ -58,7 +58,7 @@ por ej:
 # Ejercicio 6
 Escriba un programa C que tome 2 cadenas por línea de comandos: A y B; e imprima la cadena A después de haber duplicado todas las ocurrencias de B..
 ej.: reemp.exe “Este es el final” final -----> Este es el final final
-```
+```C
 void duplicarOcurrencias(char* cadena1, char* cadena2){
      if (strlen(cadena1) < strlen(cadena2){
             printf("%s , cadena1);
@@ -87,7 +87,7 @@ void duplicarOcurrencias(char* cadena1, char* cadena2){
        }
 }       
                   
-
+```
 # Ejercicio 7
 Escriba las siguientes definiciones/declaraciones:
 a) Definición de una la función SUMA, que tome dos enteros largos con signo y devuelva su suma. Esta función sólo debe ser visible en el módulo donde se la define.
