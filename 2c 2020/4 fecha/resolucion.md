@@ -13,7 +13,7 @@ Escribir un programa ISO C MULTIPLATAFORMA que procese el archivo “bigEndian.d
 Qué es un Deadlock? Ejemplifique.
 Un deadlock es cuando se tienen bloqueados multiples hilos. Un ejemplo muy claro de esto es cuando el hilo 1 toma al recurso A, el hilo 2 Toma al recuros B porque no llego a tomar el A, el hilo 1 termina y esta a la espera de liberen el recurso b para libersr el recurso A y el hilo 2 esta haciendo lo mismo Esta esperando que se libere el recurso A para liberar el B. De esta manera ambos hilos estan bloqueandose mutuamente.
 ej:
-```
+```C++
 std::mutex m
 void funcion(){
      m.lock() // se bloquea a la espera de ser liberado el mutex tomado por el hilo priniciapl
