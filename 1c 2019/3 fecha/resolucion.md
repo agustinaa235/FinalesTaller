@@ -23,7 +23,7 @@ class Numero{
 # Ejercicio2 
 ¿Qué es un functor? ¿Qué ventaja ofrece frente a una función convencional? Ejemplifique.
 
-Un functor es una clase que tiene sobrecargado el operador () y actua como si fuese una funcion. permite desacoplar el momento en que se pasan los paramteros mientras es ejecutada. Lo bueno que tiene es que no solo tiene las propiedades de una funcion sino que tambien es una clase y dentro del llamado puede ser modificada.
+Un functor es una clase que tiene sobrecargado el operador() y "actua" como si fuera una funcion. este permite desacoplar el momento en el que se realiza el pasaje de parametros a una funcion que esta siendo ejecutada. La ventaja que tienen es que son objetos por lo que no solo van a tener el compoamiento de una funcion sino que ademas esta(la clase) puede ir variando o cambiando su estado a memdia que se ejecuta la funcion. 
 
 Ej:
 ```C++
@@ -38,6 +38,20 @@ Ej:
           }
           std::cout << acumulador;
        }
+}
+```
+```C++
+   class Suma{
+         private:
+             int sumador1, sumador2, resultado;
+         public:
+             Suma(int a, int b): sumador1(a), sumador2(b){}
+             void operador()(){
+                  resultado = sumador1 + sumador2;
+             }
+             void imprimirSuma(){
+                  std::cout << resultado << std::endl;
+             }
 }
 ```
 
@@ -139,8 +153,7 @@ void imprimir(std::list<T>& lista){
 # Ejercicio 7
 ¿Qué características debe tener un compilador C para se considerado “portable”?
 
-Un compilador es condierado portable cuando soporta la sintaxix y semantica del lenguage c dado un estandar y no agrega ninguna sintaxis adicional por fuera de la estandar( y esto permite que el codigo sea compilado por otro compilador). Tambien debe incluir el proceso de compilacion(preprocesamiento, compiladon y linkeo). 
-Ademas el compilador debe ofrecer una implementacion de la libreria estandar de c respetando el estadar mencionado anteriormente de tal forma que si un porgrama es compilado en un entorno pueda ser compilado en otro con una libreria de c compatible.
+Un compilador es considerado "postable" cuando soporta la sintaxis (y semantica) del lenguaje c dado un estandar y no agrega ninguna sintaxis adicional por fuerda de lo estandar(con esto un programa compilado con un compilador puede ser compilado por otro). Esto incuye, tambien, el proceso de compilacion estandar( precompilacion, compialcion  y linkeo). A su vez, debe ofrecer una implementacion a la libreria de c respetando el estandar mencionado anteroirmente de tal forma que un programa compilado en un entorno pueda ser compilado en otro que poseea una libreria de c compatible.
 # Ejercicio 8
 Escriba un programa (desde la inicialización hasta la liberación de los recursos) que reciba paquetes de la forma [nnn+nn+....+nnnn] (numeros separados por +,
  encerrados entre corchetes) e imprima el resultado de la suma de cada paquete por pantalla. Al recibir un paquete vacío (“[]”) debe cerrarse ordenadamente. 
