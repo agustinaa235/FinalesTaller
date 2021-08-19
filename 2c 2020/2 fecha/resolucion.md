@@ -80,10 +80,10 @@ static float c; char d=70;
 return c+(float) d;
 }
 ``` 
-* a es la declaracion de un array de tamanio 25 de punteros a int. Se inicicalizara en el modulo extener en el que fue declarado y no posee area de memoria ya que es extern, es decir, se encuentra en otro porgrama.
+* a es la declaracion de un array de tamanio 25 de punteros a int. Dicho array es declarado como externo lo que significa es que hace referencia a un array declarado en otro modulo por lo que no se reserva memoria ya que se encuentra declarado en otro archivo.
 * b es una definicion de un funcion que devuelve int y no recieb parametros. Esta recide en el code segment y tiene un scope local.
-* c es una definicion del tipo flote, es una variable static por lo que se ecnuentra en el data segment, esta solo puede ser accedida dentro de la funcion y cuando este termine de ejecutarse termina el lifetime de la varibale. Se inicializa una vez al iniciarse la ejecucion del programa y se inicializa en cero ya que se inicializan con este valor las variables estaticas que no se les asigno un valor al compilarse el programa.
-* d es una definicion del tipo char, se encuentra inicializada con el caracter correspondiente al valor 70 de la tabla ascci, esta redice en el stack y tiene un lifetime de lo que dure la ejecucion de la funcion , es decir, cuando se sale de la funcion ya no se puede acceder a esa variable. Tiene un sope local de esa funcion.
+* c es una definicion del tipo flote, es una variable static por lo que se encuentra en el data segment, esta solo puede ser accedida dentro de la funcion y su valor se conserva entre diferentes llamados de funciones. Se inicializa una vez al iniciarse la ejecucion del programa y se inicializa en cero ya que se inicializan con este valor las variables estaticas que no se les asigno un valor al compilarse el programa.
+* d es una definicion del tipo char, se encuentra inicializada con el caracter correspondiente al valor 70 de la tabla ascci, esta redice en el stack y tiene un lifetime de lo que dure la ejecucion de la funcion , es decir, cuando se sale de la funcion ya no se puede acceder a esa variable. Tiene un scope local de esa funcion.
 
 # Ejercicio 7
 Escriba una rutina que dibuje un rombo verde que ocupe toda la ventana.
