@@ -17,6 +17,7 @@ class Numero{
               std::istream operador>>(std::istream in, Numero& numero);
               std::ostream operador<<(std::ostream out, NUmero& numero);
               operator float() const;
+              int& getValor() const; // accesibilidad
 ```
 
 # Ejercicio2 
