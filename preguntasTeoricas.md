@@ -1,7 +1,7 @@
-## Preguntas teoricas 
+# Preguntas teoricas 
 
-# Indique 2 posibles usos del modificador const. Utilice en cada caso una breve sentencia de código que lo emplee junto con la explicación del 
-# significado/consecuencia de su uso.
+## Indique 2 posibles usos del modificador const. Utilice en cada caso una breve sentencia de código que lo emplee junto con la explicación del 
+## significado/consecuencia de su uso.
 
 Un uso es para las variables. Este se usa para decir que la variable es inmutable. Ej: const int a = 1 a no va a poder ser modificada 
 otro uso es utilizar con en los metodos. Esto indica que no se va a poder modificar los atributos de la clase, es decir, no se puede modificar al objeto 
@@ -16,7 +16,7 @@ class Palabra{
       }
 }
 ```
-# Explique el concepto de Mutex. Escriba un ejemplo simple de código donde su uso resulte fundamental para garantizar el correcto empleo de recursos en un contexto concurrente. Describa los métodos disponibles y su uso.
+## Explique el concepto de Mutex. Escriba un ejemplo simple de código donde su uso resulte fundamental para garantizar el correcto empleo de recursos en un contexto concurrente. Describa los métodos disponibles y su uso.
 
 El mutx en un objeto  en la cual este posee dos estado bloqueado y liberado. Es utilizado en programas de sincronizacion de hilos o en porblemas de concurrencia
 donde se tiene uno mas recursos compartidos y se lo quiere proteger para evitar problemas como race condition entre otros.
@@ -24,13 +24,13 @@ Para eso el mutex posee dos funciones lock y unlock. Cuando un hilo toma un recu
 y no permitir que otro hilo pueda acceder a ese recurso hasta que este sea liberado. Y la segunda funcion es justamente para liberar al recurso, al mutex, y asi otro
 hilo puede acceder a el, cambia al estado liberado. 
 
-# Explique el concepto de referencia en C++. que diferencias hay con respecto a los punteros?
+## Explique el concepto de referencia en C++. que diferencias hay con respecto a los punteros?
 
 Una referencia en c++ es un tipo de dato que sirve como alias de otra varable mientras que un puntero es simplemente una direccion de memoria, es decir, almacena
 direcciones de memoria. Otra diferencia es que una refrencia en c++ es inmutable, puede apuntar a un objeto en toda su vida mientras que los punteros pueden 
 ir apuntado a distinas direciones de memoria.
 
-# Explique el concepto de object slicin (objeto recortado). Escriba un breve ejemplo sobre como esto afecta una función que pretende aplicar polimorfismo sobre uno de sus parámetros.
+## Explique el concepto de object slicin (objeto recortado). Escriba un breve ejemplo sobre como esto afecta una función que pretende aplicar polimorfismo sobre uno de sus parámetros.
 
 El objet slicn es cuando se le asigna un objeto perteneciente a una clase derivada una instancia de su clase base. Lo que genera es que se pierda parte de su 
 informacion ( de ahi sale el nombre objeto recortado). Lo que se pierden son los atributrso extras que posee la clase derivada. 
