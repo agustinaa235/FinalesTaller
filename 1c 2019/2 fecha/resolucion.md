@@ -10,15 +10,16 @@ class Numero{
           Numero(); // por default
           Numero(Numero&& numero) // por movimiento
           Numero(const Numero& numero) // por copia;
-          Numero operador++();
+          Numero operador++(); pre incrementador
+          Numero operator++(int) post incrementador
           Numero& operador=(Numero&& numero);
           operator long() conts;
           void operator()();
-          std::istream operador>> (std::istream& in, Numero& numero){
+          friend std::istream& operador>> (std::istream& in, Numero& numero){
               in >> numero.valor;
               return in;
           }
-          std::ostream operador<<(std::ostream& out, Numero& numero){
+          friends std::ostream& operador<<(std::ostream& out, Numero& numero){
             out << numero.valor;
             return out;
           }
