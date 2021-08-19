@@ -52,7 +52,9 @@ Declare una clase a elección considerando: - Atributos que son necesarios - Acc
            Numero(int& unValor);
            Numero(const Numero& unNumero);
            Numero operador-(Numero& unNumero);
-           Numero operador++();
+           Numero operador++(); pre incremento
+           Numero operator++(int); post incremento
+           Numero operator--(int); post descremento
            Numero operador--();
            std::istream& operador>> (std::istream& in, Numero& unNumero);
            std::ostream& operador<< (std::ostream& in, Numero& unNumero);
@@ -63,8 +65,17 @@ Declare una clase a elección considerando: - Atributos que son necesarios - Acc
 # Ejercicio 8
  Implemente una función C++ denominada SoloMuliplos que reciba una lista de elementos numéricos y un elemnto numérico x. La función debe devolver una nueva 
  lista con los elementos de la primera que sean múltiplos de x:
- 
- ` std::list<T> SoloMultiplos(std::list<T> a,T x);`
+ ```
+ std::list<T> SoloMultiplos(std::list<T> a,T x){
+     std::list<T> nueva;
+     for (T& elem: a){
+          if (elem % a == 0){
+               nueva.psuh_back(elem);
+          }
+     }
+     return nueva;
+ }
+ ```
  
 # Ejercicio 9 
   ¿Se puede evitar que un objeto de una clase sea copiado?¿y clonado?. En caso afirmativo explique cómo puede hacerse. En caso negativo explique por qué no 
