@@ -99,16 +99,17 @@ class Numero{
         hiloImpar.join();
         return 0;
     }    
-               
+ ```              
 # Ejercicio 4
 Explique qué es (a), (b), (c) y (d), haciendo referencia a su valor y momento de inicialización, su comportamiento y el area de memoria donde residen:
-
+```C++
 static int a;
 int b()
 {
 static int c; char d=65;
 return c+(int) d;
 }
+```
 * a: a es una definicion de una varaible del tipo int, es static por lo que se va a encontrar almacenada en el data segmente y su scope es local del programa, es decir, solo puede ser accedida en ese modulo. Como no se eucnetra inicializada por el programador esta es inicializada en cero cuando se ejecuta el programa. 
 * b: b es una definicion de una funcion que deuelven un tipo de dato int y que no recibe parametros. Esta tien scope local y se encuentra en el code segment. 
 * c: es una definicio de una variable del tipo int que es static, esta se encuentra en el data segmente y se inicializa en cero cuando comienza el programa y su scope es local a la funcion, es decir, solo puede ser accedida dentro de la funcion. 
@@ -120,7 +121,7 @@ HECHO
 ¿Por qué las librerías que usan Templates se publican con todo el código fuente y no como un .h y .o/.obj?.
 Los templates son plantillas para generar clases. Estas sirven para poder generar codigo generico. Se suele usar en funciones donde la implementacion solo varia con respecto al tipo de dato que se esta usando. Se publican con todo el codgio ya que este es porcesado por el compilador y depende del tipo de dato que se este usando en ese momento. por eso podemos especificar el tipo de dato o dejar que el compilador lo deduzca, pero dicho codigo debe compilarse en el momento que se defina el tipo de dato.
 ej
-```
+```C++
 void imprimir(std::list<T>& lista){
         for (T& elem: lista){
                  std::cout << elem << std::endl;
