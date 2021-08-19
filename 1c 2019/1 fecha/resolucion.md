@@ -73,7 +73,7 @@ Por ultimo esta la etapa de linkeo en donde se juntan los distintos modulos en u
 
 # Ejercicio 9
 ¿Qué ventaja ofrece un lock raii frente al tradicional lock/unlock ?
-Un lock raii es un lock que sigue con el patron raii, es decir, en el constructor se realiza un lock del mutex y cuando se invoca al destructor se realiza un unlock. Esto permite evitar problemas de olvidos de programador de no liberar al mutex cuando termina de utilizar el recurso.
+Un lock raii es un lock que sigue con el patron raii, es decir, en el constructor se realiza un lock del mutex y cuando se invoca al destructor se realiza un unlock. Esto permite evitar problemas de olvidos de programador de no liberar al mutex cuando termina de utilizar el recurso y tener un codgio mas robuzto.
 
 # Ejercicio 10
 ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en términos de mantener el programa ‘vivo’ ?
