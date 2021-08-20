@@ -95,7 +95,9 @@ a) Definición de una la función SUMA, que tome dos enteros largos con signo y 
 b) Declaración de un puntero a puntero a entero sin signo.
 c) Definición de un caracter solamente visible en el módulo donde se define.
 a)
-``` static long int suma( long int unNumero, long int otroNUmero){
+
+``` 
+     static long int suma( long int unNumero, long int otroNUmero){
       return (unnumero + otroNumero);
    }
  ```
