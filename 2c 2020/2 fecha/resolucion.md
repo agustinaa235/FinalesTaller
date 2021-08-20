@@ -16,7 +16,7 @@ int main(){
 # Ejercicio 3
 ¿Qué finalidad tiene la palabra virtual antepuesta a un método? Ejemplifique.
 
-La palabra virtual lo que indica es si ese metodo va a tener entrada en la tabla virtual del metodos. Va a indicrasos si el metodo se resuelve en tiempo de ejecucuion .Los metodos virtuales son metodos que se declaran en una clase base y estos pueden ser redefinidos o no en las clases sub hijas. Si fuese abstracto, es decir virtual puro, ahi las clases hijas tienen que definiarla cada uno pero sino es virtual puro pueden no redefinirlas. Son muy importantes para la la programacion orientada a objetos, para la herencia y el polimorfismo. 
+La palabra virtual lo que indica es si ese metodo va a tener entrada en la tabla virtual del metodos. Va a indicrasos si el metodo se resuelve en tiempo de ejecucuion(lo que se conoce como dynamic binding) .Los metodos virtuales son metodos que se declaran en una clase base y estos pueden ser redefinidos o no en las clases sub hijas. Si fuese abstracto, es decir virtual puro, ahi las clases hijas tienen que definiarla cada uno pero sino es virtual puro pueden no redefinirlas. Son muy importantes para la la programacion orientada a objetos, para la herencia y el polimorfismo. 
 ej:
 ```C++
  Class Figura{
