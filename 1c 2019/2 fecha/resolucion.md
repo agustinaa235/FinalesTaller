@@ -102,7 +102,7 @@ a)
    }
  ```
  
- ` unsigned int *(*a);`
+ ` extern unsigned int *(*a);`
  
  ` static char b = 'a';`
  
