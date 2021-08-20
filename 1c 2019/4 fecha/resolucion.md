@@ -1,18 +1,16 @@
 # Ejercici0 1
 ¿Qué es una macro de C? Enumere buenas prácticas para su definición.
-Es una porcion de codigo en la cual es procesada en la etapa de precompilacion, en la precompilacion lo que se hace es copiar esa porcion de codigo en todo lugar 
-al que fue llamado. Una macro es una instrcuccion que se realiza en la forma de directiva al preprocesador del compilador de c, con el objetivo de que este expanda todas sus aparaciciones del simbolo de la macro de forma literal. La macros pueden estar en funcion de varaibles por lo que una buena practica es poner e las variables entre parentesis ya que este lo que hace es copiar de forma literal y asi evitar probelmas.
+Una macro es una instruccion que es realiza en forma de directiva del precompialdor de compilador de c, con el objetivo de expandir todas las apariciones del simbolo asociado a la macro de forma literal (en donde aparece el simbolo de la macro copia literalmente su contenido). La macros pueden estar en funcion de variables, y como estas son expandidas de forma literal, es importante que las variables se encuentren entre parentesis para evitar problemas o errores. Otra buena practica es el uso de un buen nombre descriptivo. 
 ej:
- ``` #define DOBLE(A) 2*(A)
- ```
- 
+` #define DOBLE(A) 2*(A)`
+
 # Ejercicio 2
 Describa el proceso de transformación de código fuente a un ejecutable. Precise las etapas y las tareas desarrolladas en cada una de ellas
 para pasar del codigo fuente a un codigo ejecutable tenemos distintas etapas:
  - Preproceso: 
-    Es la etapa donde se procesan las macros, lo que se hace es copiar el codigo de la macro en todo lugar al que fue llamado
+    Es la etapa donde se procesan las macros, lo que se hace es copiar el codigo de la macro en todo lugar al que fue llamado. tambien se procesan las directivas del precompialdor. En esta estapa se borrarn los completarios
  - Compilacion: 
-    En esta etapa se pasa de codigo fuente c a codigo assembly 
+    En esta etapa se pasa de codigo fuente c a codigo assembly. se realiza un parceo, analisis sintatico, ect. 
  -  Ensambablado: 
     Una vez generado el codigo assembly, se debe pasar a codigo objeto. En esta etapa consta de dos pasadas. En la primer pasada se crea una tabla de simbolos en 
     la cual se cargan todos los simbolos(variables, ctes, etc) y luego en la segunda pasada es donde se genera el codigo objeto. 
@@ -46,9 +44,9 @@ Explique qué es cada uno de los siguientes, haciendo referencia a su inicializa
  1. Una variable global static
  2. Una variable local static 
  3. Un atributo de clase static.
-1. La variable sera global en el modulo que se la declaro, pero no en otro. Es decir solo puede ser accedida en el archivo donde se la declaro, como es static no puede ser exportada por el linker. El area en el cual reside es en la de datasegment y si no la defino con un valor explicito se la inicialiara con null. Su vida duarara lo que dure el archivo. 
-2. la variable local sera solo accedida en la funcion donde se la declaro por ser local y su lifetime termina cuando se salga de la funcion. Por ser static reside en el datasegment y van a ser inicializadas por el compilador. 
-3. Este atrubuto se encuentra en el datasegment, su visibilidad esta regrintiga a ala clase que lo define en caso que sea un atributo privado. Si esta no es inicializada explicitamente se la inicializa con un valor nulo. 
+1. La variable sera global en el modulo que se la declaro, pero no en otro. Es decir solo puede ser accedida en el archivo donde se la declaro, como es static no puede ser exportada por el linker. El area en el cual reside es en la de datasegment y si no la defino con un valor explicito se la inicialiara con null. Su vida duarara lo que dure el archivo en el que fue declarada. 
+2. la variable local sera solo accedida en la funcion donde se la declaro por ser local y mantiene su valor entre llamados de distitas funciones. Por ser static reside en el datasegment y si no es inicialziada por el programado se inicializa en cero o nuul.
+3. Este atrubuto se encuentra en el datasegment, y puede ser accedida en todo el programa. tambein la inicializa el compilador en ceor o null en caso de no estar inicializada por el programador. Su lifetime sera de todo el programa. 
 # Ejercicio 9
 ¿Cómo se logra que 2 threads accedan (lectura/escritura) a un mismo recurso compartido sin que se generen problemas de consistencia? Ejemplifique.
    Para que dos hilos puedan acceder a un mismo recurso compartido sin que ocurra una race condition hay que porteger al recurso compartido, esto se hace por medio de un mutex( el cual debe ser unico para el recurso) cuando el hilo accede al recurso debe lockear el mutex para que ningun otro hilo pueda acceder al recurso mientras el lo esta usando. Cuando termina de usarlo debe unlockear el mutex porque sino se tendria un dead lock. Se recomienda fuertemente usar un lock raii en la cual se hace un ,lock en el contrscutor y un unlock cuando se invoca al destructor de esta forma el porgramador no se olvida de liberar el recurso. 
