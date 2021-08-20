@@ -1,5 +1,26 @@
 # Preguntas teoricas 
 
+## explique que significa la palabra reservada expliciti. Ejemplifique.
+
+Si se le agrega la palabra reservada explicit al constructor evita que el compilador pueda usar ese constructor en conversiones implicitas. SE suele poner para evitar errores que serian ocultos por esas conversciones. Ej:
+```
+class Foo{
+      public:
+            Foo(int a) :a(a) explicit{};
+      private:
+            int a;
+}
+void hacerAlgo(Foo foo){}
+int main(){
+      hacerAlgo(42); 
+      return 0;
+}
+```
+en este caso el compilador falla ya que se esta llamaodn al contsrictor de una manera implicita, lo que se deberia hacer es 
+Foo foo1(42);
+hacerAlgo(foo);
+
+
 ## Indique 2 posibles usos del modificador const. Utilice en cada caso una breve sentencia de código que lo emplee junto con la explicación del 
 ## significado/consecuencia de su uso.
 
