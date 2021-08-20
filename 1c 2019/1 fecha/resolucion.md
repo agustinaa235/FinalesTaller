@@ -67,9 +67,9 @@ FALTA
 
 Describa el proceso de transformación de código fuente a un ejecutable. Precise las etapas, las tareas desarrolladas y los tipos de error generados en cada 
 una de ellas.
-La primer etapa es la de preprocesamiento en la cual se realizna la expancion de la macros y directivas del compilador. Aca es donde saltan los erroe relacionado con la expancion de la macro y si los includes.
-DEspues esta la etapa de compilacion donde se pasa de codigo fuente a codigo objeto, primero se pasa de codigo fuente a codigo de mas bajo nivel(codigo assembly) y luego de codigo assembly a odigo objeto. En esta etapa surgen los errores como cuando no hay una variable declarada, es decir se utiliza una vriable que no fue declarada ect. 
-Por ultimo esta la etapa de linkeo en donde se juntan los distintos modulos en uno solo y aca es donde se genera el archivo ejecutable.
+La primer etapa es la de preprocesamiento en la cual se realizna la expancion de la macros y directivas del compilador( se inclitesn los archivos .h que se hayan utilizado por medio de la directiva #include). Aca es donde saltan los erroe relacionado con la expancion de la macro y si los includes.
+DEspues esta la etapa de compilacion donde se pasa de codigo fuente a codigo objeto. Se realiza un analisis sintactico donde se parcea, se verifica la sintaxis se realiza la traduccion y se ensabla el codgio. En esta etapa surgen los errores como  de sintaxis, cuando no hay una variable declarada, es decir se utiliza una vriable que no fue declarada ect o cuando se usa una funcion no declarada
+Por ultimo esta la etapa de linkeo en donde se juntan los distintos modulos en uno solo y aca es donde se genera el archivo ejecutable. Se resuelven referdnicas externas problemas como falta de definiciones (no esta definida una funcion que fue declarada) no se pudo resolver esa referencia externa 
 
 # Ejercicio 9
 ¿Qué ventaja ofrece un lock raii frente al tradicional lock/unlock ?
