@@ -84,6 +84,20 @@ Esto es falso, Si tomamos por separado lo que ocupa en memoria un int en una arq
 # Ejercicio 8
 ¿En qué consiste el patrón de diseño RAII? Ejemplifique.
 El disenio raiii es un patron que tiene encapsulado la creacion y la destruccion de un objeto. Dentro del constructor es donde se realiza la creacion del objeto y es donde se inicializan todos sus recursos  y se reserve la memoria necesaria dejandolo valido para uso mientras que el destructor es donde se liberan todos los recursos del objeto. De esta forma evitamos tener leeks dentro de un objeto y tener un codigo mas robusto.
+ej:
+```C++
+class Lock{
+    private:
+        std::mutex m;
+    public:
+        Lock(){
+            m.lock();
+        }
+        ~Lock(){
+            m.unlock();
+        }
+}        
+ ``` 
 
 # Ejercicio 9 
 Escribir un programa ISO C que procese el archivo de enteros de 2 bytes bigendian cuyo nombre es recibido como parámetro. El procesamiento consiste en eliminar 
