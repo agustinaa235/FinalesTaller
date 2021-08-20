@@ -3,7 +3,7 @@
 ## explique que significa la palabra reservada expliciti. Ejemplifique.
 
 Si se le agrega la palabra reservada explicit al constructor evita que el compilador pueda usar ese constructor en conversiones implicitas. SE suele poner para evitar errores que serian ocultos por esas conversciones. Ej:
-```
+```C++
 class Foo{
       public:
             Foo(int a) :a(a) explicit{};
