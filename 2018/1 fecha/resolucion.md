@@ -55,9 +55,7 @@ ej:
    class Matematica{
          static float pi = 3.14;
    }      
- ```        
-
-
+ ```   
 # Ejercicio 6
 
 ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en término de
@@ -73,10 +71,7 @@ aparte asi se puede seguir procesar los mensajesa de los clientes y rendpoder mi
 
 Explique qué es y para qué sirve un constructor MOVE en C++. Indique cómo se comporta el
 sistema si éste no es definido por el desarrollador.
-El constructor por movimiento evita que se genere una copia de la instacia pasada y lo que haces es mover las referencias. Lo que hace es cambiar el ownershipt, 
-la instacia pasada por referencia es modificada y deja de apuntar los paraemtros y el objeto creado pasa a puntar a ellas. Si el construtor por moviento no esta definido
-por el programador y el cmpilador crea uno por default solo si no se encuentra definido el por copia.  
-
+El constructor Move, como lo indica su nombre,permite generar un objeto a partir de otro pero este no realiza una copia de los contenidos, sino que lo que hace es "mover" los contendiso. El objetivo de su implemnetacion es evitar tener copias de recursos ya sea porque es innecesario o porque es incorrecto. LO que haces es mver los atributos de objeto "viejo" al nuevo para luego invalidar los de viejo( en caso de un puntero que apunte a null), es decir, el objeto pasado deja de apuntar a sus recursos y por lo tando deja de ser el duenio y el nuevo duenio pasa a ser el objeto creado. LO que hace es cambiar el ownership. Si el constructor no esta implemnetado por el desarrollador se crea uno por default si no se tiene implementado un constrcutor por copia o operador pro copia o destrcuctres y sino se le indcico con delate (en c++ 11)
 # Ejercicio 8
 
 Escribir un programa ISO C que procese el archivo “valuesword.dat” sobre sí mismo,
