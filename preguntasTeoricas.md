@@ -82,6 +82,10 @@ ej:
             x.b();
        }
 ```
+## Explique que son los metodos virtuales y ejemplifique.
+
+La palabra virtual antepuesta a un método indica que debe tener una entrada en la tabla virtual (vtable) para cada objeto en la cual los nos indica es que ese metodo  se resuelve en tiempo de ejecucion( lo que se conoce como dynamic binding). Esto permite utilizar polimorfismo basado en herencia donde los métodos de las clases derivadas reemplazan a los de la clase base independientemente de cómo se lo acceda (desde un puntero a la base o al tipo derivado).
+Los metodos virtuales son declaros en la clase madre y pueden ser refedinidos o no en las clases hijas. Si es virutal puro las clase hijas deben implementar ese metodo mientras que si no es virtual puro no es necesario que lo redefinan.
 
 ## Explique cómo se comporta el modificador virtual en C++ y qué relación guarda con las VTables (tablas virtuales). De un breve ejemplo donde su uso sea imprescindible.
 
@@ -142,10 +146,16 @@ psudo codigo:
       }  
 ## Explique que es y para que sirve una variable de clase (atributo estático) en c++. Mediante un ejemplo, indique como se define dicha variable, su incializacion, y el accesos a su valor para realizar una impresión simple en el main.
 
-la variable de clase o atributo de clase es una variable que es comun a todas las instancias de la clase. SE declara como un atributo normal pero con la palabra reservada static previa. Esta puede estar inicializa por el programador como no. SE puede acceder a ella sin la necesidad de teer instancia una clase.
+la variable de clase o atributo de clase es una variable que es comun a todas las instancias de la clase. SE declara como un atributo normal pero con la palabra reservada static previa. Esta puede estar inicializa por el programador como no. SE puede acceder a ella sin la necesidad de tener una instancia una clase( se puede acceder utilizanod MyClass::varibleEstatica) como tambien se puede acceder por medio de un objeto. Puede ser accedida por todo el programa.
 ej:
+
 ```C++
-      if (Foo::a){
+      class Foo{
+            public:
+            static int a; //declaricion
+      }
+      Foo::a = 2;
+      if (Foo::a >= 1){
        
        }
 ```
