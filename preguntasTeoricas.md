@@ -303,20 +303,24 @@ en cambio con la otras su se da 3 al cubo que es 27.
 
 Los funciones son clases que sobrecargan al operador(), y se podrian pensar como clases que actuan como funciones. Estas permiten desacoplar el momento en el que se se pasan los paraemtris a una funcion mientras es ejectada. Ora ventaja que traen es que son objetos por lo que ademas de tener el comprotamiento de una funcion pueden ir variando en funcion de la ejecucuion
 ```c++
-class Impresora{
-    public:
-        Impresora(std::string in):texto(in){}
-        void operator() () {
-            std::cout<<texto<<std::endl;
-        }
-    private:
-        std::string texto;
-}
-
-int main() {
-    Impresora impresora("Hola mundo");
-    impresora();
-    return 0;
+class Acumulador{
+      private:
+      int numero1, numero2, resultado;
+      public:
+      Acumulador(int a, int b): numero1(a), numero2(b){}
+      ~Acumualor();
+      void operator()(){
+            resultado = numero1 + numero2;
+       }
+       void imprimirResultado(){
+            std::cout << resultado << std::endl;
+       }
+  int main(){
+      Acumulador acumulador(3,4);
+      std::thread t1(acumulador);
+      t1.join();
+      acumulador.imprimirResultado();
+      return 0;
 }
 ```
 ## ¿Qué ventaja ofrece un lock RAII frente al tradicional lock/unlock?
