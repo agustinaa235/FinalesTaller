@@ -44,7 +44,7 @@ mismo número leído pero en decimal).
 
 # Ejercicio 5
 Explique qué se entiende por “compilación condicional”. Ejemplifique mediante código.
-Es el proceso en el cual se verifica condicionalmente si un bloque de codigo debe compilarse o no. Esto se hace por medio de las directivas del compilador #ifndef, #define y #endif. 
+Es el proceso en el cual se verifica condicionalmente si un bloque de codigo debe compilarse o no. Esto se hace por medio de las directivas del compilador #ifndef, #define y #endif. Un uso común para la compilación condicional es evitar inclusiones múltiples del mismo archivo de encabezado.
 por ej:
 ```C
  #ifndef _NUMERO_
