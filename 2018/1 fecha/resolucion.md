@@ -10,7 +10,8 @@ Un funtor es una clase que actua como si fuese una funcion. Permite definir obje
 sintaxis que se utilza para una fincion. Para eso, estas clases deben sobrecargar el operador(). La ventaja que posee es que permiten desacoplar el momento de 
 pasajes de parametros a una funcion mientras es ejecutada.
 ej:
-``` class Sumador{
+```C++ 
+   class Sumador{
    priavte:
        int valorInicial;
    public:
@@ -29,10 +30,10 @@ Describa con exactitud las siguientes declaraciones/definiciones globales:
   * static int *C[3];
   * static short F(const float *a);
 
-a) I es un puntero a un vector de tamanio 3 de eleventos del tipo float. Por ser extern I se encuentra en otro modulo por lo que no se encuentra en memoria del modulo.
-b) C es un vector de tamanio 3 cuyos elementos son punteros a int. Es una variable statica por lo que se encuentra en el data segment y puede ser accedida por todo el modulo que se encuentra. 
-c) f es una funcion que recibe como parametros un variable a que es un puntero a un float, en la cual no se puede modificar ese valor) y devuelve el tipo short. La 
-funcion es statica por lo que se encuentra en el data segmente. 
+1. I es un puntero a un vector de tamanio 3 de eleventos del tipo float. Por ser extern I se encuentra declarado en otro modulo por lo que no se le asigna espacio en la memoria
+2. C es un vector de tamanio 3 cuyos elementos son punteros a int. Es una variable statica por lo que se encuentra en el data segment y puede ser accedida por el scope donde fue definida.
+3. f es una funcion que recibe como parametros un variable a que es un puntero a un float, en la cual no se puede modificar ese valor) y devuelve el tipo short. La 
+funcion es statica por lo que se encuentra en el data segmentement y puede ser accedia en todo el archivo que fue declarada.
 
 # Ejercicio 4
 
@@ -47,14 +48,21 @@ de locks posibles.
 Explique qué es y para qué sirve una variable de clase (o atributo estático) en C++. Mediante un
 ejemplo de uso, indique cómo se define dicha variable, su inicialización y el acceso a su valor para
 realizar una impresión simple dentro de un main.
-Una variable de clase o atributo estatico es un componente de la clase que es compartida por todas las instancias(objetos) de la clase. Esa es inicialziada por el programador o en cero en caso de no estra inicializada y su valor es el mismo para todas las instancias y no puede ser modificado. La ventaja que brinda es que 
-puedo acceder a ese valor sin tener que tener instanciada uan clase. (ej: Matematica.pi 
+
+Una varible de clase o atributo estatico es un atributo comun a todas las instancias(objetos) de la clase(es decir su valor es el mismo para todas las instancias). Esta se encuentra en el data segmente. Su valor es inicializado en cero o null en caso de no estar inicializada por el programador. Se puede acceder a el sin tener una clase instanciada.
+ej:
+```C++
+   class Matematica{
+         static float pi = 3.14;
+   }      
+ ```        
+
 
 # Ejercicio 6
 
 ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en término de
 mantener el programa ‘vivo’ ?
-Un funcion es bloqueante cuando se queda "suspendida" o a la espera de la finalizacion de una tarea. Un ejemplo de funcion bloqueante es accept en sockes en la cual se 
+Un funcion es bloqueante cuando se queda "suspendida" o a la espera de la finalizacion de una tarea para retornar, es decir, no retorna inmediatamente depsues de ser ejecutada. Un ejemplo de funcion bloqueante es accept en sockes en la cual se 
 queda a la espera de clientes. En programas chicos puede que no sea un problema pero para programas mucho mas grandes si porque queda en stanby toda la ejecucion 
 del resto del porgrama. Por lo que se sueleve hacer es ejecutar esa funcion bloqueante en un hilo aparte para que el resto del programa pueda seguir ejecutandose.
 Esto es de vital imprtancia para programas del tipo server/cliente en la cual se tiene un servidor que esta constantemente aceptando muchisimos clientes y no se 
@@ -66,7 +74,7 @@ aparte asi se puede seguir procesar los mensajesa de los clientes y rendpoder mi
 Explique qué es y para qué sirve un constructor MOVE en C++. Indique cómo se comporta el
 sistema si éste no es definido por el desarrollador.
 El constructor por movimiento evita que se genere una copia de la instacia pasada y lo que haces es mover las referencias. Lo que hace es cambiar el ownershipt, 
-instacia pasada por referencia es modificada y deja de apuntar los paraemtros y el objeto creado pasa a puntar a ellas. Si el construtor por moviento no esta definido
+la instacia pasada por referencia es modificada y deja de apuntar los paraemtros y el objeto creado pasa a puntar a ellas. Si el construtor por moviento no esta definido
 por el programador y el cmpilador crea uno por default solo si no se encuentra definido el por copia.  
 
 # Ejercicio 8
