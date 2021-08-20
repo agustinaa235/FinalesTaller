@@ -118,4 +118,42 @@ luego de que se imprima "hola" en el hilo foo, este es joineable porque termino 
 # Ejercicio 10
 Escriba un programa C que tome 2 cadenas por línea de comandos: A y B; e imprima la cadena A después de haber duplicado todas las ocurrencias de B. ej.: 
 reemp.exe “El final está aprobado” aprobado -----> El final está aprobado aprobado
+```C++
+void procesar(char* cadena1, char* cadena* 2){
+    int largo1 = strlen(cadena1);
+    int largo2 = strlen(cadena2);
+    if (largo1 < largo2){
+        printf("%s , cadena1);
+        return;
+    }
+    for (int i = 0; i< largo1, i++){
+        int pos2 = 0;
+        int pos1 = i;
+        if (cadena1[pos1] == cadena2[pos2]){
+          pos2++;
+          pos1++;
+          bool noCoincide = false;
+          while (pos2 < largo2 && !NoCoincide){
+              if (cadena1[pos1] == cadena2[pos2]){
+                    pos1++;
+                    pos2++;
+              } else {
+                  noCoincide = true;
+              }
+          }
+          if (!noCoincide){
+                printf(" %s ", cadena2);
+          }
+       }
+       printf("%c", cadena1[i]);
+    }
+    return ;
+ }
+ int main(int argc, char** argv){
+      char* cadena1 = argv[1];
+      char* cadena2 = argv[2];
+      procesar(cadena1, cadena2);
+      return 0;
+ }
+ ```
 
