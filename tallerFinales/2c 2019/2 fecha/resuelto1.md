@@ -90,7 +90,7 @@ class Lock{
     private:
         std::mutex m;
     public:
-        Lock(){
+        Lock(std::mutex& m) : m(m) {
             m.lock();
         }
         ~Lock(){
