@@ -7,7 +7,7 @@ Declaración de un puntero a puntero a entero largo con signo.
 Definición de una la función RESTA, que tome dos enteros largos con signo y devuelva su resta. Esta función debe ser visible en todos los módulos del programa.
 Definición de un caracter solamente visible en el módulo donde se define.
 
-1. ` signed long int *(*p); `
+1. ` extern signed long int *(*p); `
 2. ` signed long int RESTA(long int numero1, long int numero2){ return numero1 - numero2 }`
 3. ` static char a = 'b';`
 
